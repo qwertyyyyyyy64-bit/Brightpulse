@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#070817">
+    <title>Galaxy Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+<div class="universe">
+    <div class="stars"></div>
+    <!-- 3D Galaxy Star Tunnel -->
+<div class="galaxy-3d">
+    <div class="galaxy-ring ring1"></div>
+    <div class="galaxy-ring ring2"></div>
+    <div class="galaxy-ring ring3"></div>
+    <div class="galaxy-ring ring4"></div>
+    <div class="galaxy-ring ring5"></div>
+    <div class="galaxy-ring ring6"></div>
+</div>
+
+    <div class="planet planet1"></div>
+    <div class="planet planet2"></div>
+    <div class="planet planet3"></div>
+
+    <!-- MOVING ASTEROIDS -->
+    <div class="asteroid asteroid1"></div>
+    <div class="asteroid asteroid2"></div>
+    <div class="asteroid asteroid3"></div>
+    <div class="asteroid asteroid4"></div>
+    <div class="asteroid asteroid5"></div>
+    <div class="asteroid asteroid6"></div>
+
+    <!-- FLYING ROCKET -->
+    <div class="rocket">🚀</div>
+
+    <!-- EXTRA SPACE EFFECTS -->
+    <div class="space-glow"></div>
+</div>
+
+
+    
+<header>
+    <div class="header-left">
+
+        <button
+            class="settings-toggle"
+            id="settingsToggle"
+            onclick="toggleHubSettings(event)"
+            aria-label="Open settings"
+            aria-expanded="false">
+            ⚙
+        </button>
+
+        <div class="logo">✦ TACHYZEL <span>UNIVERSE</span></div>
+
+    </div>
+
+    <div class="hub-settings" id="hubSettings">
+
+    <div class="settings-heading">
+        <span>✦ TACHYZEL SETTINGS</span>
+        <button onclick="toggleHubSettings(event)" aria-label="Close settings">×</button>
+    </div>
+
+    <!-- GENERAL CATEGORY -->
+    <div class="settings-category">
+        <h4>🌌 GENERAL</h4>
+
+        <button class="settings-item" onclick="navigateHub('home')">
+            <span>🏠</span>
+            <div>
+                <strong>Home</strong>
+                <small>Return to main portal</small>
+            </div>
+            <b>↗</b>
+        </button>
+    </div>
+
+    <!-- TOOLS CATEGORY -->
+    <div class="settings-category">
+        <h4>🧰 TOOLS</h4>
+
+        <button class="settings-item" onclick="navigateHub('currency')">
+            <span>₱ $</span>
+            <div>
+                <strong>Peso Converter</strong>
+                <small>Convert currencies</small>
+            </div>
+            <b>↗</b>
+        </button>
+
+        <button class="settings-item" onclick="navigateHub('calculator')">
+            <span>√π</span>
+            <div>
+                <strong>Scientific Calculator</strong>
+                <small>Calculate equations</small>
+            </div>
+            <b>↗</b>
+        </button>
+
+        <button class="settings-item" onclick="navigateHub('japanese')">
+            <span>あ</span>
+            <div>
+                <strong>Japanese Learning</strong>
+                <small>Learn Japanese characters</small>
+            </div>
+            <b>↗</b>
+        </button>
+    </div>
+
+    <!-- ENTERTAINMENT CATEGORY -->
+    <div class="settings-category">
+        <h4>🎮 ENTERTAINMENT</h4>
+
+        <button class="settings-item" onclick="navigateHub('games')">
+            <span>🎮</span>
+            <div>
+                <strong>Games</strong>
+                <small>Play arcade games</small>
+            </div>
+            <b>↗</b>
+        </button>
+    </div>
+
+    <!-- AI CATEGORY -->
+    <div class="settings-category">
+        <h4>🤖 AI ASSISTANT</h4>
+
+        <div class="settings-toggle-row">
+            <div>
+                <strong>Tashii Bot</strong>
+                <small>Show or hide your assistant</small>
+            </div>
+
+            <label class="switch">
+                <input
+                    type="checkbox"
+                    id="tashiiToggle"
+                    checked
+                    onchange="toggleTashiiBot(this.checked)">
+                <span class="switch-slider"></span>
+            </label>
+        </div>
+    </div>
+
+</div>
+
+    <div class="datetime">
+        <div id="time">12:00:00</div>
+        <div id="date">Loading date...</div>
+    </div>
+</header>
+
+
+    <main>
+        <section id="home" class="page active">
+            <div class="hero">
+                <p class="subtitle">✦ YOUR UNIVERSE OF TOOLS ✦</p>
+                <h1>Explore the <span>TACHYZEL</span></h1>
+                <p class="description">Discover your universe of tools, games, and calculations.</p>
+            </div>
+
+            <div class="portal-grid">
+                
+                <button class="portal-card" onclick="openPage('games')">
+                    <div class="portal-icon">🎮</div>
+                    <h2>Games</h2>
+                    <p>Enjoy three exciting arcade adventures.</p>
+                    <div class="enter">ENTER TASHI PORTAL ↗</div>
+                </button>
+
+                <button class="portal-card" onclick="openPage('japanese')">
+                    <div class="portal-icon">あ</div>
+                    <h2>Japanese Learning</h2>
+                    <p>Learn Hiragana, Katakana, and Kanji characters.</p>
+                    <div class="enter">START LEARNING ↗</div>
+                </button>
+
+                <button class="portal-card" onclick="openPage('calculator')">
+                    <div class="portal-icon">√π</div>
+                    <h2>Scientific Calculator</h2>
+                    <p>Calculate equations using scientific functions.</p>
+                    <div class="enter">ENTER PORTAL ↗</div>
+                </button>
+
+                <button class="portal-card" onclick="openPage('currency')">
+                    <div class="portal-icon">₱ $</div>
+                    <h2>Peso Converter</h2>
+                    <p>Convert Philippine Peso, Dollar, and Euro.</p>
+                    <div class="enter">ENTER PORTAL ↗</div>
+                </button>
+            </div>
+
+            <div class="footer-text">✧ INFINITE POSSIBILITIES ✧</div>
+        </section>
+
+        <section id="currency" class="page tool-page">
+            <button class="back-btn" onclick="openPage('home')">← Back to Galaxy</button>
+
+            <div class="heading">
+                <div class="heading-icon">₱</div>
+                <div>
+                    <p class="subtitle">CURRENCY PORTAL</p>
+                    <h2>Peso <span>Converter</span></h2>
+                </div>
+            </div>
+
+            <div class="glass-panel currency-panel">
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" value="100" min="0">
+
+                <div class="currency-row">
+                    <div>
+                        <label for="fromCurrency">From</label>
+                        <select id="fromCurrency">
+                            <option value="PHP">Philippine Peso (PHP)</option>
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                        </select>
+                    </div>
+
+                    <button class="swap-btn" id="swap" aria-label="Swap currencies">⇄</button>
+
+                    <div>
+                        <label for="toCurrency">To</label>
+                        <select id="toCurrency">
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="PHP">Philippine Peso (PHP)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="primary-btn" id="convert">Convert ✦</button>
+
+                <div class="result-box">
+                    <p class="subtitle">CONVERSION RESULT</p>
+                    <h2 id="result">—</h2>
+                    <p id="rateNote">Exchange rates load when you convert.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="games" class="page tool-page">
+            <button class="back-btn" onclick="openPage('home')">← Back to Galaxy</button>
+
+            <div class="heading">
+                <div class="heading-icon">🎮</div>
+                <div>
+                    <p class="subtitle">ARCADE NEBULA</p>
+                    <h2>Game <span>Hub</span></h2>
+                </div>
+            </div>
+
+            <div class="game-select" id="gameSelect">
+                <button class="game-card" onclick="startGame('flappy')">
+                    <span>🐤</span>
+                    <h3>Tashii Bird</h3>
+                    <p>Tap or press Space to fly.</p>
+                </button>
+
+                <button class="game-card" onclick="startGame('snake')">
+                    <span>🐍</span>
+                    <h3>Tashii</h3>
+                    <p>Use arrows, WASD, or touch controls.</p>
+                </button>
+
+                <button class="game-card" onclick="startGame('dino')">
+                    <span>🦖</span>
+                    <h3>Tashisour</h3>
+                    <p>Tap or press Space to jump.</p>
+                </button>
+            </div>
+
+            <div class="game-stage glass-panel hidden" id="gameStage">
+                <div class="game-top">
+                    <div>
+                        <p class="subtitle" id="gameLabel">ARCADE</p>
+                        <h3 id="gameName">Game</h3>
+                    </div>
+                    <div class="game-score">SCORE <b id="score">0</b></div>
+                </div>
+
+                <canvas id="gameCanvas" width="800" height="420"
+                    aria-label="Game screen"></canvas>
+
+                <div class="game-controls">
+    <p id="gameHint">Press START GAME to begin!</p>
+
+    <button class="start-game-btn" id="startGameBtn">
+        ▶ START GAME
+    </button>
+
+    <button class="secondary-btn" id="restart">
+        ↻ Restart
+    </button>
+
+    <button class="secondary-btn" id="exitGame">
+        ✦ Choose Game
+    </button>
+</div>
+
+                <!-- Snake-only touch arrow controls -->
+                <div id="snakePad" class="snake-pad hidden" aria-label="Snake direction controls">
+                    <button class="direction-btn up" data-direction="up" aria-label="Move up">▲</button>
+                    <div class="direction-row">
+                        <button class="direction-btn" data-direction="left" aria-label="Move left">◀</button>
+                        <button class="direction-btn" data-direction="down" aria-label="Move down">▼</button>
+                        <button class="direction-btn" data-direction="right" aria-label="Move right">▶</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- JAPANESE LEARNING PORTAL -->
+<section id="japanese" class="page tool-page">
+
+    <button class="back-btn" onclick="openPage('home')">
+        ← Back to Galaxy
+    </button>
+
+    <div class="heading">
+        <div class="heading-icon">あ</div>
+        <div>
+            <p class="subtitle">日本語を学ぼう</p>
+            <h2>Japanese <span>Learning</span></h2>
+        </div>
+    </div>
+
+    <p class="japanese-description">
+        Explore the Japanese writing systems and learn new characters
+        at your own pace.
+    </p>
+
+    <div class="japanese-tabs">
+        <button class="japanese-tab active"
+                onclick="showJapaneseTab('hiragana', this)">
+            あ Hiragana
+        </button>
+
+        <button class="japanese-tab"
+                onclick="showJapaneseTab('katakana', this)">
+            ア Katakana
+        </button>
+
+        <button class="japanese-tab"
+                onclick="showJapaneseTab('kanji', this)">
+            漢字 Kanji
+        </button>
+    </div>
+
+    <div class="glass-panel japanese-panel">
+
+        <div class="japanese-title">
+            <h3 id="japaneseHeading">Hiragana</h3>
+            <p id="japaneseSubtitle">
+                The basic Japanese phonetic alphabet.
+            </p>
+        </div>
+
+        <div id="japaneseContent" class="japanese-grid"></div>
+
+        <p class="japanese-tip">
+            ✦ Tap a character card to reveal its pronunciation or meaning.
+        </p>
+
+    </div>
+
+</section>
+
+        <section id="calculator" class="page tool-page">
+            <button class="back-btn" onclick="openPage('home')">← Back to Galaxy</button>
+
+            <div class="heading">
+                <div class="heading-icon">√π</div>
+                <div>
+                    <p class="subtitle">MATH CONSTELLATION</p>
+                    <h2>Scientific <span>Calculator</span></h2>
+                </div>
+            </div>
+
+            <div class="glass-panel calculator">
+                <div class="calc-display">
+                    <div id="calcExpression">Ready for a calculation</div>
+                    <input id="calcScreen" value="0" readonly>
+                </div>
+
+                <div class="calc-buttons" id="calcButtons">
+                    <button class="key function" data-value="sin(">sin</button>
+                    <button class="key function" data-value="cos(">cos</button>
+                    <button class="key function" data-value="tan(">tan</button>
+                    <button class="key function" data-value="log(">log</button>
+                    <button class="key function" data-value="ln(">ln</button>
+
+                    <button class="key function" data-value="sqrt(">√</button>
+                    <button class="key function" data-value="^2">x²</button>
+                    <button class="key function" data-value="^">xʸ</button>
+                    <button class="key function" data-value="(">(</button>
+                    <button class="key function" data-value=")">)</button>
+
+                    <button class="key function" data-value="π">π</button>
+                    <button class="key function" data-value="e">e</button>
+                    <button class="key function" data-value="!">x!</button>
+                    <button class="key function" data-value="÷">÷</button>
+                    <button class="key function" data-value="×">×</button>
+
+                    <button class="key" data-value="7">7</button>
+                    <button class="key" data-value="8">8</button>
+                    <button class="key" data-value="9">9</button>
+                    <button class="key function" data-value="-">−</button>
+                    <button class="key function" data-value="+">+</button>
+
+                    <button class="key" data-value="4">4</button>
+                    <button class="key" data-value="5">5</button>
+                    <button class="key" data-value="6">6</button>
+                    <button class="key utility" data-action="backspace">⌫</button>
+                    <button class="key utility" data-action="clear">AC</button>
+
+                    <button class="key" data-value="1">1</button>
+                    <button class="key" data-value="2">2</button>
+                    <button class="key" data-value="3">3</button>
+                    <button class="key" data-value="0">0</button>
+                    <button class="key" data-value=".">.</button>
+
+                    <button class="key function" data-value="Ans">Ans</button>
+                    <button class="key function" data-value="abs(">abs</button>
+                    <button class="key function" data-value="%">%</button>
+                    <button class="key equals" data-action="equals">=</button>
+                    <button class="key function" data-value="mod">mod</button>
+                </div>
+
+                <p class="calc-note">Trigonometric functions use degrees.</p>
+            </div>
+        </section>
+    </main>
+
+<!-- COMPASS PAGE -->
+<section id="compass" class="page tool-page">
+
+    <button class="back-btn" onclick="openPage('home')">
+        ← Back to Galaxy
+    </button>
+
+    <div class="heading">
+        <div class="heading-icon">🧭</div>
+        <div>
+            <p class="subtitle">FIND YOUR DIRECTION</p>
+            <h2>World <span>Compass</span></h2>
+        </div>
+    </div>
+
+    <p class="compass-description">
+        Discover which direction your device is facing.
+    </p>
+
+    <div class="glass-panel compass-panel">
+
+        <div class="compass-heading">
+            <span>LIVE DIRECTION</span>
+            <span class="compass-status" id="compassStatus">
+                NOT STARTED
+            </span>
+        </div>
+
+        <div class="compass-dial">
+            <div class="compass-rotator" id="compassRotator">
+
+                <span class="compass-label north">N</span>
+                <span class="compass-label east">E</span>
+                <span class="compass-label south">S</span>
+                <span class="compass-label west">W</span>
+
+                <div class="compass-tick tick-top"></div>
+                <div class="compass-tick tick-right"></div>
+                <div class="compass-tick tick-bottom"></div>
+                <div class="compass-tick tick-left"></div>
+
+                <div class="compass-needle">
+                    <div class="needle-north"></div>
+                    <div class="needle-south"></div>
+                </div>
+
+                <div class="compass-center"></div>
+            </div>
+        </div>
+
+        <div class="compass-reading">
+            <h2 id="compassDirection">--</h2>
+            <p id="compassDegrees">0°</p>
+            <span>YOUR CURRENT DIRECTION</span>
+        </div>
+
+        <button class="compass-start" id="compassStart"
+            onclick="startCompass()">
+            🧭 START COMPASS
+        </button>
+
+        <p class="compass-note" id="compassNote">
+            Tap START COMPASS and allow sensor access when requested.
+        </p>
+
+    </div>
+</section>
+
+
+    <footer>MADE OF STARDUST ✦ TASHII HUB</footer>
+
+<!-- TASHII.IO MOVABLE AI BUBBLE -->
+<div class="tashii-assistant bubble-closed" id="tashiiAssistant">
+
+    <div class="tashii-message" id="tashiiMessage">
+        <div class="tashii-message-name">✦ TASHII.IO</div>
+        <p id="tashiiText">
+            Hello! Welcome to TASHII HUB! How can I help you today?
+        </p>
+    </div>
+
+    <button class="tashii-robot" id="tashiiRobot"
+        onclick="tashiiGreeting()"
+        aria-label="Talk to TASHII.IO">
+
+        <div class="robot-antenna"></div>
+
+        <div class="robot-head">
+            <div class="robot-ear left"></div>
+            <div class="robot-ear right"></div>
+
+            <div class="robot-face">
+                <div class="robot-eyes">
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="robot-smile"></div>
+            </div>
+        </div>
+
+        <div class="robot-body">
+            <span>✦</span>
+        </div>
+    </button>
+
+    <div class="tashii-name">
+        TASHII.IO <span>AI ASSISTANT</span>
+    </div>
+</div>
+<script src="script.js"></script>
+
+
+</body>
+</html>
